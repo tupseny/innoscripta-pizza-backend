@@ -48,11 +48,12 @@ class CreateMenuTables extends Migration
     private function createMealIngredient()
     {
         Schema::create(self::MEAL_INGREDIENT_KEY, function (Blueprint $t) {
-            $t->unsignedBigInteger('meal_id');
-            $t->unsignedBigInteger('ingredient_id')->nullable();
-            $t->unsignedFloat('amount');
+            $t->id();
+            $t->foreignId('meal_id');
+            $t->foreignId('ingredient_id')->nullable();
+            $t->unsignedFloat('amount')->default(0);
+            $t->timestamps();
 
-            $t->primary(['meal_id', 'ingredient_id']);
             $t->foreign('meal_id')
                 ->references('id')
                 ->on(self::MEAL_KEY)
@@ -73,9 +74,10 @@ class CreateMenuTables extends Migration
     private function createIngredients()
     {
         Schema::create(self::INGREDIENT_KEY, function (Blueprint $t) {
-            $t->id()->primary();
+            $t->id();
             $t->string('name');
             $t->string('unit');
+            $t->timestamps();
         });
     }
 
@@ -87,8 +89,9 @@ class CreateMenuTables extends Migration
     private function createMenuGroup()
     {
         Schema::create(self::MENU_GROUP_KEY, function (Blueprint $t) {
-            $t->id()->primary();
+            $t->id();
             $t->string('name');
+            $t->timestamps();
         });
     }
 
@@ -103,12 +106,13 @@ class CreateMenuTables extends Migration
     private function createMeal()
     {
         Schema::create(self::MEAL_KEY, function (Blueprint $t) {
-            $t->id()->primary();
+            $t->id();
             $t->string('name');
-            $t->unsignedBigInteger('group_id')->index();
-            $t->float('price');
+            $t->foreignId('menu_group_id')->index()->nullable();
+            $t->unsignedFloat('price')->default(0)->comment('rubles');
+            $t->timestamps();
 
-            $t->foreign('group_id')
+            $t->foreign('menu_group_id')
                 ->references('id')
                 ->on(self::MENU_GROUP_KEY)
                 ->onDelete('restrict');

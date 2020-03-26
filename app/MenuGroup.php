@@ -15,6 +15,6 @@ class MenuGroup extends Model
      */
     public function meals()
     {
-        return $this->hasMany(Meal::class)->orderBy('name');
+        return $this->hasMany(Meal::class);
     }
 }
