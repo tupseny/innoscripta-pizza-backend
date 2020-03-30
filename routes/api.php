@@ -22,6 +22,5 @@ Route::apiResource('/menu', 'MenuGroupController')->except([
     'store', 'update', 'destroy'
 ]);
 
-Route::apiResource('/order', 'OrderController')->only([
-    'store'
-]);
+Route::middleware('auth:api')->post('/order', 'OrderController@store');
+Route::post('/order/anon', 'OrderController@storeAnon');
