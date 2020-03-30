@@ -18,6 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('login', 'LoginController@authenticate');
+Route::post('logout', 'LoginController@logout');
+
+Route::apiResource('register', 'RegisterController', [
+   'only' => ['store']
+]);
+
 Route::apiResource('/menu', 'MenuGroupController')->except([
     'store', 'update', 'destroy'
 ]);
