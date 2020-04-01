@@ -14,15 +14,24 @@ use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {
+
     use DatabaseMigrations;
 
+    protected function setUp():void
+    {
+        parent::setUp();
+        Auth::logout();
+    }
+
+
     /**
-     * Authorise with valid credentials.
+     * authenticate with valid credentials.
      *
      * @return void
      */
     public function testAuthenticateValid()
     {
+
         $validPassword = Str::random();
         $user = factory(User::class)->create([
             'password' => Hash::make($validPassword)
@@ -41,9 +50,9 @@ class LoginControllerTest extends TestCase
     }
 
     /**
-     *  authorise with invalid email
+     *  authenticate with invalid email
      */
-    public function testAuthoriseInvalidEmail()
+    public function testAuthenticateInvalidEmail()
     {
         $validPassword = Str::random();
         $user = factory(User::class)->create([
@@ -64,9 +73,9 @@ class LoginControllerTest extends TestCase
     }
 
     /**
-     *  authorise with invalid pass
+     *  authenticate with invalid pass
      */
-    public function testAuthoriseInvalidPassword()
+    public function testAuthenticateInvalidPassword()
     {
         $validPassword = Str::random();
         $user = factory(User::class)->create([
@@ -86,5 +95,18 @@ class LoginControllerTest extends TestCase
             ->assertJson(['user' => null]);
     }
 
+    /**
+     *  Logout using valid token
+     */
+    public function testLogoutWithToken()
+    {
+        $user = factory(User::class)->create();
 
+        Auth::login($user);
+
+        $response = $this->post('/api/logout');
+
+        $response->assertOk();
+        self::assertFalse(Auth::check());
+    }
 }
