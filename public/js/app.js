@@ -92179,9 +92179,9 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/App.js":
+/***/ "./resources/js/app.js":
 /*!*****************************!*\
-  !*** ./resources/js/App.js ***!
+  !*** ./resources/js/app.js ***!
   \*****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -95403,9 +95403,9 @@ var RegisterValidator = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/sass/App.scss":
+/***/ "./resources/sass/app.scss":
 /*!*********************************!*\
-  !*** ./resources/sass/App.scss ***!
+  !*** ./resources/sass/app.scss ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -95416,13 +95416,13 @@ var RegisterValidator = /*#__PURE__*/function () {
 
 /***/ 0:
 /*!*************************************************************!*\
-  !*** multi ./resources/js/App.js ./resources/sass/App.scss ***!
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
   \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\marsi\OneDrive\Work\Project\HomesteadProjects\innoscripta\resources\js\App.js */"./resources/js/App.js");
-module.exports = __webpack_require__(/*! C:\Users\marsi\OneDrive\Work\Project\HomesteadProjects\innoscripta\resources\sass\App.scss */"./resources/sass/App.scss");
+__webpack_require__(/*! C:\Users\marsi\OneDrive\Work\Project\HomesteadProjects\innoscripta\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\marsi\OneDrive\Work\Project\HomesteadProjects\innoscripta\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
