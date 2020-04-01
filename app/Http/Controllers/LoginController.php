@@ -23,4 +23,8 @@ class LoginController extends Controller
     {
         Auth::logout();
     }
+
+    protected function user(Request $request){
+        return $request->user();
+    }
 }
