@@ -28,7 +28,7 @@ class MealMenuSeeder extends Seeder
         ]);
         $snacks->save();
 
-        $pizza->meals()->create([
+        $pizza->meals()->saveMany([
             new Meal(['name' => 'Farm']),
             new Meal(['name' => 'Margarita']),
             new Meal(['name' => 'Meat']),
@@ -38,14 +38,14 @@ class MealMenuSeeder extends Seeder
             new Meal(['name' => 'Solyami'])
         ]);
 
-        $drink->meals()->create([
+        $drink->meals()->saveMany([
             new Meal(['name' => 'Cola']),
             new Meal(['name' => 'Fanta']),
             new Meal(['name' => 'Pepsi']),
             new Meal(['name' => 'Sprite']),
         ]);
 
-        $snacks->meals()->create([
+        $snacks->meals()->saveMany([
             new Meal(['name' => 'Chips']),
         ]);
 
