@@ -53,4 +53,31 @@ class MenuGroupControllerTest extends TestCase
             ->assertJson($expectedJson)
             ->assertJsonMissing($expectedMissingJson);
     }
+
+    /**
+     *  Get all meals of requested group id
+     */
+    public function testShow()
+    {
+        $mealGroup = factory(MenuGroup::class)->create();
+        $mealGroup->meals()->createMany(
+            factory(Meal::class, 3)->make()->toArray()
+        );
+
+        $jsonStructure = [[
+           'id', 'name', 'price'
+        ]];
+
+        $json = $mealGroup->meals()->get('id', 'name', 'price')->toArray();
+
+
+        $response = $this->json('GET', '/api/menu/' . $mealGroup->id);
+
+        $response
+            ->assertOk()
+            ->assertJsonStructure($jsonStructure)
+            ->assertJson($json);
+    }
+
+
 }
