@@ -93950,6 +93950,8 @@ var NavbarPizza = function NavbarPizza() {
       user = _useContext2[0],
       setUser = _useContext2[1];
 
+  var cartContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_redux_context__WEBPACK_IMPORTED_MODULE_6__["CartContext"])[0];
+
   var _useContext3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_redux_context__WEBPACK_IMPORTED_MODULE_6__["CurrencyContext"]),
       _useContext4 = _slicedToArray(_useContext3, 2),
       currencyContext = _useContext4[0],
@@ -94041,6 +94043,7 @@ var NavbarPizza = function NavbarPizza() {
     };
 
     var renderRightNav = function renderRightNav() {
+      var cartCount = cartContext.cart.length;
       return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
           onSelect: handleCurrencyChange,
           title: currencyContext.currency.symbol,
@@ -94054,7 +94057,10 @@ var NavbarPizza = function NavbarPizza() {
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
           className: 'nav-link text-uppercase',
           to: config.nav.cart.href
-        }, " ", config.nav.cart.name), user.api_token || token ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
+        }, config.nav.cart.name, cartCount > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+          variant: "danger",
+          pill: true
+        }, cartContext.cart.length) : null), user.api_token || token ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
           to: config.nav.history.href,
           className: 'nav-link text-uppercase mr-3'
         }, config.nav.history.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
