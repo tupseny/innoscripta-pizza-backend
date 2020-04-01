@@ -36,14 +36,12 @@ class MenuGroupControllerTest extends TestCase
 
         $emptyGroup = factory(MenuGroup::class)->create();
 
+        $expectedJson =
+            $oneMealGroup->whereId($oneMealGroup->id, $tenMealGroup->id)->get(['name', 'id'])->toArray();
+
         $expectedJsonStructure = [[
             'id', 'name'
         ]];
-
-        $expectedJson = [
-            $oneMealGroup->id()-1 => $oneMealGroup->toArray(),
-            $tenMealGroup->id()-1 => $tenMealGroup->toArray()
-        ];
 
         $expectedMissingJson = $emptyGroup->toArray();
 
