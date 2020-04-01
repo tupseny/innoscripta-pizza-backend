@@ -141,7 +141,7 @@ const MenuGroupBody = (props) => {
 
     return items ? <Row>
         {items.map((item) =>
-            <Col xs={4} className={'menu-item-container'} key={item.id}>
+            <Col className={'menu-item-container'} key={item.id}>
                 <MenuItem image={category.toLowerCase() + '_' + item.name.toLowerCase() + '.png'} category={category} id={item.id} name={item.name} price={item.price}/>
             </Col>
         )}
