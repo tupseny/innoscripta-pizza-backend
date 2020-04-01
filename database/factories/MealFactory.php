@@ -9,8 +9,5 @@ $factory->define(Meal::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'price' => $faker->numberBetween(200, 1000),
-        'menu_group_id' => function () {
-            return factory(App\MenuGroup::class)->create()->id;
-        }
     ];
 });
