@@ -4,6 +4,10 @@
 Innoscripta's test work. This is backend part. 
 Front is located in - [Other repository](https://github.com/tupseny/innoscripta-pizza-frontend)
 
+## Tech
+- Laravel framework
+- MySQL database
+
 # HOW TO RUN
 ## Environment values
 ### Other:
