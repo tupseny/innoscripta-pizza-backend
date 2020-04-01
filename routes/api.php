@@ -18,6 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('user')->middleware('auth:api')->group(function () {
+    Route::get('/', function (Request $request) {return $request->user();});
+    Route::apiResource('orders', 'OrderController')->only([
+        'index', 'store'
+    ]);
+});
+
 Route::post('login', 'LoginController@authenticate');
 Route::post('logout', 'LoginController@logout');
 
