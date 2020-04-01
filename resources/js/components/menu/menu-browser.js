@@ -25,7 +25,7 @@ export const MenuBrowser = () => {
     //Get items from cache if exist
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem(GROUPS_KEY));
-        if (Object.keys(items).length > 0) {
+        if (items && Object.keys(items).length > 0) {
             setItems(items);
             setIsLoaded(true)
         }

@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootswatch/dist/journal/bootstrap.min.css'
-import './App.scss';
 import {Menu} from "./components/menu";
 import {Cart} from "./components/cart"
 import {NavbarPizza} from "./components/navigation";
@@ -14,6 +13,10 @@ import {CONFIG} from "./helpers/config";
 import {PizzaFooter} from "./components/navigation/footer/footer";
 import {OrderHistory} from "./components/profile/order-history";
 import {Home} from "./components/home";
+import ReactDOM from "react-dom";
+import * as serviceWorker from "./serviceWorker";
+
+require('./bootstrap');
 
 function App() {
     return (
@@ -36,3 +39,13 @@ function App() {
 }
 
 export default App;
+
+ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.register();
